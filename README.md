@@ -11,6 +11,8 @@ Explorer (ADX) cluster and hunt it with the same KQL you would run in Defender.
 |---|---|---|---|---|
 | [case-05-anydesk](case-05-anydesk/) | AnyDesk remote access abuse (RMM) | 2 | 2026-06-26 | 8 |
 
+Hunt exercises and worked answers for each case: the [Security-in-bits newsletter](https://newsletter.securityinbits.com), free to subscribe.
+
 ## Load a case
 
 You need a Microsoft account. No Azure subscription, no credit card. About 10 minutes.
