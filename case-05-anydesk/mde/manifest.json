@@ -1,0 +1,60 @@
+{
+  "case": "case-05-anydesk",
+  "source": "Microsoft Defender for Endpoint Advanced Hunting tables, lab case-05 (2026-06-26)",
+  "extracted_utc": "2026-09-06T17:27:01Z",
+  "extracted_by": "Security-in-bits lab",
+  "devices": [
+    "desktop-ceo.corp.local",
+    "desktop-hr.corp.local"
+  ],
+  "device_filter": "DeviceName in~ ('desktop-ceo.corp.local','desktop-hr.corp.local') (case-insensitive; one DeviceEvents row is spelled desktop-hr.CORP.local)",
+  "start": "2026-06-26T00:00:00Z",
+  "end": "2026-06-27T00:00:00Z",
+  "alerts_window": "2026-06-26T00:00:00Z to 2026-06-28T00:00:00Z (AlertEvidence only, widened one day for late alert rows)",
+  "tables": {
+    "DeviceProcessEvents": 4153,
+    "DeviceNetworkEvents": 8082,
+    "DeviceFileEvents": 37827,
+    "DeviceRegistryEvents": 6426,
+    "DeviceLogonEvents": 61,
+    "DeviceEvents": 3803,
+    "DeviceImageLoadEvents": 1494,
+    "AlertEvidence": 24
+  },
+  "per_host": {
+    "desktop-ceo.corp.local": {
+      "DeviceProcessEvents": 2233,
+      "DeviceNetworkEvents": 4675,
+      "DeviceFileEvents": 18804,
+      "DeviceRegistryEvents": 3613,
+      "DeviceLogonEvents": 53,
+      "DeviceEvents": 2155,
+      "DeviceImageLoadEvents": 851
+    },
+    "desktop-hr.corp.local": {
+      "DeviceProcessEvents": 1920,
+      "DeviceNetworkEvents": 3407,
+      "DeviceFileEvents": 19023,
+      "DeviceRegistryEvents": 2813,
+      "DeviceLogonEvents": 8,
+      "DeviceEvents": 1648,
+      "DeviceImageLoadEvents": 643
+    }
+  },
+  "zero_row_tables": [],
+  "formats": [
+    "csv"
+  ],
+  "row_count_verification": "CSV rows + excluded_rows per table == the original Defender export, all 8 tables, re-checked after sanitization",
+  "sanitized": true,
+  "excluded_rows": {
+    "DeviceEvents": 309,
+    "DeviceFileEvents": 93,
+    "DeviceImageLoadEvents": 17,
+    "DeviceNetworkEvents": 544,
+    "DeviceProcessEvents": 257,
+    "DeviceRegistryEvents": 103
+  },
+  "excluded_reason": "Defender's own activity removed: every process descended from MsSense.exe / SenseIR.exe (they carry tenant identifiers), and MpCmdRun.exe GetDeviceTicket runs (per-run access keys); plus network rows to the home ISP's content-cache servers (they identify the ISP)",
+  "sanitize_map": "domain -> corp.local (host names kept), private IPs -> 172.16.x.y, local admin -> ladmin, DeviceId/SID/AlertId/AD domain GUID/alert MergeByKey re-mapped 1:1; operator 172.190.5.225 verbatim (our test Azure lab VM)"
+}
