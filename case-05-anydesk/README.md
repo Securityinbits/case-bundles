@@ -34,9 +34,9 @@ It creates all 8 tables from this repo in one go; re-running replaces them, it n
 
 ## Read this before you hunt
 
-- **The operator IP `172.190.5.225` is real and kept on purpose.** It was our own short-lived test
+- **The operator IP `172.190.5.225` is real and kept on purpose.** It was my own short-lived test
   VM in Azure, used as the attacker side of the emulation. It is not someone else's infrastructure.
-- **Our emulation tooling is visible in the data** (for example a PowerShell emulation script).
+- **My emulation tooling is visible in the data** (for example a PowerShell emulation script).
   That is how the attack was staged in the lab. A real intrusion would not carry it; do not build a
   detection on it.
 - `10.0.1.4:7070` is AnyDesk trying a direct connection to the operator VM's Azure private
@@ -50,4 +50,4 @@ It creates all 8 tables from this repo in one go; re-running replaces them, it n
 - **Removed, 1,323 rows, none from the attack:** Defender's own agent activity (`MsSense.exe` /
   `SenseIR.exe` process trees, `MpCmdRun.exe GetDeviceTicket`) and network rows to the home ISP's
   cache servers. Per-table counts: `mde/manifest.json`.
-- Everything else is verbatim, including every remaining IP. Browser locale is set to `en_US`.
+- Everything else is verbatim; public IPs are real. Browser locale is set to `en_US`.
